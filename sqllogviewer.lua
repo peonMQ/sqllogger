@@ -157,7 +157,7 @@ local renderLogViewer = function()
   imgui.End()
 
   if not openGUI then
-      terminate = true
+    terminate = true
   end
 end
 
