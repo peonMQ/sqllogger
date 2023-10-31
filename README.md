@@ -30,6 +30,18 @@ local logger = require sqllogger/sqllogger
 logger.Info('Hello World!')
 ```
 
+In this scenario, only logs above 'info' would be written to the db.  That means that trace and debug messages will be skipped, while info, warn, error, fatal, and help messages will be persisted.
+
+In this way you can flip between adding debug messages and whether those messages be persisted or not. By just toggling Write.loglevel to 'debug':
+
+```lua
+local logger = require('knightlinc/Write')
+logger.prefix = 'MyScript'
+logger.Debug('This message will not be persisted.')
+logger.loglevel = 'debug'
+logger.Debug('This message will br persisted.')
+```
+
 Lastly, sqllogger handles string formatting for you, so you can use it just like you would string.format:
 ```lua
 local logger = require('sqllogger/sqllogger')
